@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MakeFileProj</Keyword>
+    <ProjectGuid>{745A915A-5DC4-45A3-8461-414036785981}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\</OutDir>
+    <IntDir>.\</IntDir>
+    <NMakeBuildCommandLine>NMAKE /f makefile.win INSTDIR="\Apache2" LONG=Release _dummy</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>NMAKE /f makefile.win INSTDIR="\Apache2" LONG=Release _dummy </NMakeReBuildCommandLine>
+    <NMakeOutput>\Apache2\bin\httpd.exe</NMakeOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\</OutDir>
+    <IntDir>.\</IntDir>
+    <NMakeBuildCommandLine>NMAKE /f makefile.win INSTDIR="\Apache2" LONG=Debug _dummy</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>NMAKE /f makefile.win INSTDIR="\Apache2" LONG=Debug _dummy </NMakeReBuildCommandLine>
+    <NMakeOutput>\Apache2\bin\httpd.exe</NMakeOutput>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Browse\httpd.bsc" />
+    <CustomBuild Include="os\win32\BaseAddr.ref" />
+    <CustomBuild Include="CHANGES" />
+    <CustomBuild Include="Makefile.win" />
+    <CustomBuild Include="STATUS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BuildBin.vcxproj">
+      <Project>{0d8d363d-6dbb-4906-b8fd-e9d297229354}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\debugging\mod_bucketeer.vcxproj">
+      <Project>{f0f0206e-352e-4033-bdf5-3f4986ebe9be}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\echo\mod_echo.vcxproj">
+      <Project>{bbfb5c0a-61a1-4d50-8d68-c7344b3af1be}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\examples\mod_case_filter.vcxproj">
+      <Project>{622f7b71-8bb8-4b65-8c4d-a38e0905bfb4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\examples\mod_case_filter_in.vcxproj">
+      <Project>{b5baafd8-09f0-47f5-9d0f-b5e12263da64}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\examples\mod_example_hooks.vcxproj">
+      <Project>{af6fd633-8081-403b-a31d-f6f3d0be34d9}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\examples\mod_example_ipc.vcxproj">
+      <Project>{a4a4f4df-d68e-4b7d-b0f1-8ea3816e0422}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="modules\proxy\examples\mod_lbmethod_rr.vcxproj">
+      <Project>{ec6eb85a-7a6e-446a-99b7-5bdb533598a4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

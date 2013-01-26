@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d0a6d423-ae2e-4907-afee-a2199f53b4cc}</UniqueIdentifier>
+      <Extensions>*.c</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{682b8f22-0d72-46be-819e-05c24e6b8c79}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="mod_ssl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_dh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_io.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_kernel.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_mutex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_pphrase.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_rand.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_vars.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_engine_ocsp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_util_ocsp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_scache.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_util_stapling.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ssl_util_ssl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mod_ssl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ssl_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ssl_util_ssl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ssl_util_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\build\win32\httpd.rc" />
+  </ItemGroup>
+</Project>

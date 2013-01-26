@@ -1,0 +1,3 @@
+﻿  mod_lbmethod_byrequests.c
+     Creating library .\Release\mod_lbmethod_byrequests.lib and object .\Release\mod_lbmethod_byrequests.exp
+  mod_lbmethod_byrequests.vcxproj -> g:\php-sdk\lib_builds\vc11\x86\apache_autobuild\2.4.x\modules\proxy\balancers\.\Release\mod_lbmethod_byrequests.so

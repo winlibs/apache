@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><!--
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+              This file is generated from xml source: DO NOT EDIT
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      -->
+<title>mod_lua - Apache HTTP Server</title>
+<link href="../style/css/manual.css" rel="stylesheet" media="all" type="text/css" title="Main stylesheet" />
+<link href="../style/css/manual-loose-100pc.css" rel="alternate stylesheet" media="all" type="text/css" title="No Sidebar - Default font size" />
+<link href="../style/css/manual-print.css" rel="stylesheet" media="print" type="text/css" /><link rel="stylesheet" type="text/css" href="../style/css/prettify.css" />
+<script src="../style/scripts/prettify.js" type="text/javascript">
+</script>
+
+<link href="../images/favicon.ico" rel="shortcut icon" /></head>
+<body>
+<div id="page-header">
+<p class="menu"><a href="../mod/">Modules</a> | <a href="../mod/directives.html">Directives</a> | <a href="http://wiki.apache.org/httpd/FAQ">FAQ</a> | <a href="../glossary.html">Glossary</a> | <a href="../sitemap.html">Sitemap</a></p>
+<p class="apache">Apache HTTP Server Version 2.4</p>
+<img alt="" src="../images/feather.gif" /></div>
+<div class="up"><a href="./"><img title="&lt;-" alt="&lt;-" src="../images/left.gif" /></a></div>
+<div id="path">
+<a href="http://www.apache.org/">Apache</a> &gt; <a href="http://httpd.apache.org/">HTTP Server</a> &gt; <a href="http://httpd.apache.org/docs/">Documentation</a> &gt; <a href="../">Version 2.4</a> &gt; <a href="./">Modules</a></div>
+<div id="page-content">
+<div id="preamble"><h1>Apache Module mod_lua</h1>
+<div class="toplang">
+<p><span>Available Languages: </span><a href="../en/mod/mod_lua.html" title="English">&nbsp;en&nbsp;</a> |
+<a href="../fr/mod/mod_lua.html" hreflang="fr" rel="alternate" title="Français">&nbsp;fr&nbsp;</a></p>
+</div>
+<table class="module"><tr><th><a href="module-dict.html#Description">Description:</a></th><td>Provides Lua hooks into various portions of the httpd
+request processing</td></tr>
+<tr><th><a href="module-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="module-dict.html#ModuleIdentifier">Module Identifier:</a></th><td>lua_module</td></tr>
+<tr><th><a href="module-dict.html#SourceFile">Source File:</a></th><td>mod_lua.c</td></tr>
+<tr><th><a href="module-dict.html#Compatibility">Compatibility:</a></th><td>2.3 and later</td></tr></table>
+<h3>Summary</h3>
+
+<p>This module allows the server to be extended with scripts written in the
+Lua programming language.  The extension points (hooks) available with
+<code class="module"><a href="../mod/mod_lua.html">mod_lua</a></code> include many of the hooks available to
+natively compiled Apache HTTP Server modules, such as mapping requests to
+files, generating dynamic responses, access control, authentication, and
+authorization</p>
+
+<p>More information on the Lua programming language can be found at the
+<a href="http://www.lua.org/">the Lua website</a>.</p>
+
+<div class="note"><code>mod_lua</code> is still in experimental state.
+Until it is declared stable, usage and behavior may change
+at any time, even between stable releases of the 2.4.x series.
+Be sure to check the CHANGES file before upgrading.</div>
+
+</div>
+<div id="quickview"><h3 class="directives">Directives</h3>
+<ul id="toc">
+<li><img alt="" src="../images/down.gif" /> <a href="#luaauthzprovider">LuaAuthzProvider</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookaccesschecker">LuaHookAccessChecker</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookauthchecker">LuaHookAuthChecker</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookcheckuserid">LuaHookCheckUserID</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookfixups">LuaHookFixups</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookinsertfilter">LuaHookInsertFilter</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahookmaptostorage">LuaHookMapToStorage</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahooktranslatename">LuaHookTranslateName</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luahooktypechecker">LuaHookTypeChecker</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luainherit">LuaInherit</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luapackagecpath">LuaPackageCPath</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luapackagepath">LuaPackagePath</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luaquickhandler">LuaQuickHandler</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luaroot">LuaRoot</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#luascope">LuaScope</a></li>
+</ul>
+<h3>Topics</h3>
+<ul id="topics">
+<li><img alt="" src="../images/down.gif" /> <a href="#basicconf">Basic Configuration</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#writinghandlers">Writing Handlers</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#writingauthzproviders">Writing Authorization Providers</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#writinghooks">Writing Hooks</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#datastructures">Data Structures</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#logging">Logging Functions</a></li>
+<li><img alt="" src="../images/down.gif" /> <a href="#apache2">apache2 Package</a></li>
+</ul><ul class="seealso"><li><a href="#comments_section">Comments</a></li></ul></div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="basicconf" id="basicconf">Basic Configuration</a></h2>
+
+<p>The basic module loading directive is</p>
+
+<pre class="prettyprint lang-config">
+    LoadModule lua_module modules/mod_lua.so
+</pre>
+
+
+<p>
+<code>mod_lua</code> provides a handler named <code>lua-script</code>,
+which can be used with an <code>AddHandler</code> directive:</p>
+
+<pre class="prettyprint lang-config">
+AddHandler lua-script .lua
+</pre>
+
+
+<p>
+This will cause <code>mod_lua</code> to handle requests for files
+ending in <code>.lua</code> by invoking that file's
+<code>handle</code> function.
+</p>
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="writinghandlers" id="writinghandlers">Writing Handlers</a></h2>
+<p> In the Apache HTTP Server API, the handler is a specific kind of hook
+responsible for generating the response.  Examples of modules that include a
+handler are <code class="module"><a href="../mod/mod_proxy.html">mod_proxy</a></code>, <code class="module"><a href="../mod/mod_cgi.html">mod_cgi</a></code>,
+and <code class="module"><a href="../mod/mod_status.html">mod_status</a></code>.</p>
+
+<p><code>mod_lua</code> always looks to invoke a Lua function for the handler, rather than
+just evaluating a script body CGI style. A handler function looks
+something like this:</p>
+
+
+<pre class="prettyprint lang-lua">
+<strong>example.lua</strong>
+-- example handler
+
+require "string"
+
+--[[
+     This is the default method name for Lua handlers, see the optional
+     function-name in the LuaMapHandler directive to choose a different
+     entry point.
+--]]
+function handle(r)
+    r.content_type = "text/plain"
+    r:puts("Hello Lua World!\n")
+
+    if r.method == 'GET' then
+        for k, v in pairs( r:parseargs() ) do
+            r:puts( string.format("%s: %s\n", k, v) )
+        end
+    elseif r.method == 'POST' then
+        for k, v in pairs( r:parsebody() ) do
+            r:puts( string.format("%s: %s\n", k, v) )
+        end
+    else
+        r:puts("Unsupported HTTP method " .. r.method)
+    end
+end
+</pre>
+
+
+<p>
+This handler function just prints out the uri or form encoded
+arguments to a plaintext page.
+</p>
+
+<p>
+This means (and in fact encourages) that you can have multiple
+handlers (or hooks, or filters) in the same script.
+</p>
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="writingauthzproviders" id="writingauthzproviders">Writing Authorization Providers</a></h2>
+
+
+<p><code class="module"><a href="../mod/mod_authz_core.html">mod_authz_core</a></code> provides a high-level interface to
+authorization that is much easier to use than using into the relevant
+hooks directly. The first argument to the
+<code class="directive"><a href="../mod/mod_authz_core.html#require">Require</a></code> directive gives
+the name of the responsible authorization provider. For any
+<code class="directive"><a href="../mod/mod_authz_core.html#require">Require</a></code> line,
+<code class="module"><a href="../mod/mod_authz_core.html">mod_authz_core</a></code> will call the authorization provider
+of the given name, passing the rest of the line as parameters. The
+provider will then check authorization and pass the result as return
+value.</p>
+
+<p>The authz provider is normally called before authentication. If it needs to
+know the authenticated user name (or if the user will be authenticated at
+all), the provider must return <code>apache2.AUTHZ_DENIED_NO_USER</code>.
+This will cause authentication to proceed and the authz provider to be
+called a second time.</p>
+
+<p>The following authz provider function takes two arguments, one ip
+address and one user name. It will allow access from the given ip address
+without authentication, or if the authenticated user matches the second
+argument:</p>
+
+<pre class="prettyprint lang-lua">
+<strong>authz_provider.lua</strong>
+
+require 'apache2'
+
+function authz_check_foo(r, ip, user)
+    if r.useragent_ip == ip then
+        return apache2.AUTHZ_GRANTED
+    elseif r.user == nil then
+        return apache2.AUTHZ_DENIED_NO_USER
+    elseif r.user == user then
+        return apache2.AUTHZ_GRANTED
+    else
+        return apache2.AUTHZ_DENIED
+    end
+end
+</pre>
+
+
+<p>The following configuration registers this function as provider
+<code>foo</code> and configures it for URL <code>/</code>:</p>
+<pre class="prettyprint lang-config">
+LuaAuthzProvider foo authz_provider.lua authz_check_foo
+&lt;Location /&gt;
+  Require foo 10.1.2.3 john_doe
+&lt;/Location&gt;
+</pre>
+
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="writinghooks" id="writinghooks">Writing Hooks</a></h2>
+
+<p>Hook functions are how modules (and Lua scripts) participate in the
+processing of requests. Each type of hook exposed by the server exists for
+a specific purpose, such as mapping requests to the filesystem,
+performing access control, or setting mimetypes.  General purpose hooks
+that simply run at handy times in the request lifecycle exist as well.</p>
+
+<p>Hook functions are passed the request object as their only argument.
+They can return any value, depending on the hook, but most commonly
+they'll return OK, DONE, or DECLINED, which you can write in lua as
+<code>apache2.OK</code>, <code>apache2.DONE</code>, or
+<code>apache2.DECLINED</code>, or else an HTTP status code.</p>
+
+<pre class="prettyprint lang-lua">
+<strong>translate_name.lua</strong>
+-- example hook that rewrites the URI to a filesystem path.
+
+require 'apache2'
+
+function translate_name(r)
+    if r.uri == "/translate-name" then
+        r.filename = r.document_root .. "/find_me.txt"
+        return apache2.OK
+    end
+    -- we don't care about this URL, give another module a chance
+    return apache2.DECLINED
+end
+</pre>
+
+
+<pre class="prettyprint lang-lua">
+<strong>translate_name2.lua</strong>
+--[[ example hook that rewrites one URI to another URI. It returns a
+     apache2.DECLINED to give other URL mappers a chance to work on the
+     substitution, including the core translate_name hook which maps based
+     on the DocumentRoot.
+
+     Note: It is currently undefined as to whether this runs before or after
+     mod_alias.
+--]]
+
+require 'apache2'
+
+function translate_name(r)
+    if r.uri == "/translate-name" then
+        r.uri = "/find_me.txt"
+        return apache2.DECLINED
+    end
+    return apache2.DECLINED
+end
+</pre>
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="datastructures" id="datastructures">Data Structures</a></h2>
+
+<dl>
+<dt>request_rec</dt>
+        <dd>
+        <p>The request_rec is mapped in as a userdata. It has a metatable
+        which lets you do useful things with it. For the most part it
+        has the same fields as the request_rec struct (see httpd.h
+        until we get better docs here) many of which are writeable as
+        well as readable.  (The table fields' content can be changed, but the
+        fields themselves cannot be set to different tables.)</p>
+
+        <table class="bordered">
+
+        <tr>
+          <th><strong>Name</strong></th>
+          <th><strong>Lua type</strong></th>
+          <th><strong>Writable</strong></th>
+        </tr>
+        <tr>
+          <td><code>ap_auth_type</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>args</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>assbackwards</code></td>
+          <td>boolean</td>
+          <td>no</td>
+        </tr>
+
+        <tr>
+          <td><code>canonical_filename</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>content_encoding</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>content_type</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>context_prefix</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>context_document_root</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+
+        <tr>
+          <td><code>document_root</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>err_headers_out</code></td>
+          <td>table</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>filename</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>handler</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+
+        <tr>
+          <td><code>headers_in</code></td>
+          <td>table</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>headers_out</code></td>
+          <td>table</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>hostname</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>log_id</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>method</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>notes</code></td>
+          <td>table</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>path_info</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>protocol</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>proxyreq</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>range</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>subprocess_env</code></td>
+          <td>table</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>status</code></td>
+          <td>number</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>the_request</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>unparsed_uri</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td><code>uri</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>user</code></td>
+          <td>string</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td><code>useragent_ip</code></td>
+          <td>string</td>
+          <td>no</td>
+        </tr>
+        </table>
+
+        <p>The request_rec has (at least) the following methods:</p>
+
+        <pre class="prettyprint lang-lua">
+        r:addoutputfilter(name|function) -- add an output filter
+        </pre>
+
+
+        <pre class="prettyprint lang-lua">
+        r:parseargs() -- returns a lua table containing the request's query string arguments
+        </pre>
+
+        <pre class="prettyprint lang-lua">
+r:parsebody([sizeLimit]) -- parse the request body as a POST and return  a lua table.
+                         -- An optional number may be passed to specify the maximum number 
+                         -- of bytes to parse. Default is 8192 bytes.
+        </pre>
+
+        <pre class="prettyprint lang-lua">
+        r:puts("hello", " world", "!") -- print to response body
+        </pre>
+
+
+        <pre class="prettyprint lang-lua">
+        r:write("a single string") -- print to response body
+        </pre>
+
+        </dd>
+    </dl>
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="logging" id="logging">Logging Functions</a></h2>
+
+<pre class="prettyprint lang-lua">
+        -- examples of logging messages<br />
+        r:trace1("This is a trace log message") -- trace1 through trace8 can be used <br />
+        r:debug("This is a debug log message")<br />
+        r:info("This is an info log message")<br />
+        r:notice("This is a notice log message")<br />
+        r:warn("This is a warn log message")<br />
+        r:err("This is an err log message")<br />
+        r:alert("This is an alert log message")<br />
+        r:crit("This is a crit log message")<br />
+        r:emerg("This is an emerg log message")<br />
+</pre>
+
+
+</div><div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="section">
+<h2><a name="apache2" id="apache2">apache2 Package</a></h2>
+<p>A package named <code>apache2</code> is available with (at least) the following contents.</p>
+<dl>
+  <dt>apache2.OK</dt>
+  <dd>internal constant OK.  Handlers should return this if they've
+  handled the request.</dd>
+  <dt>apache2.DECLINED</dt>
+  <dd>internal constant DECLINED.  Handlers should return this if
+  they are not going to handle the request.</dd>
+  <dt>apache2.DONE</dt>
+  <dd>internal constant DONE.</dd>
+  <dt>apache2.version</dt>
+  <dd>Apache HTTP server version string</dd>
+  <dt>apache2.HTTP_MOVED_TEMPORARILY</dt>
+  <dd>HTTP status code</dd>
+  <dt>apache2.PROXYREQ_NONE, apache2.PROXYREQ_PROXY, apache2.PROXYREQ_REVERSE, apache2.PROXYREQ_RESPONSE</dt>
+  <dd>internal constants used by <code class="module"><a href="../mod/mod_proxy.html">mod_proxy</a></code></dd>
+</dl>
+<p>(Other HTTP status codes are not yet implemented.)</p>
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaAuthzProvider" id="LuaAuthzProvider">LuaAuthzProvider</a> <a name="luaauthzprovider" id="luaauthzprovider">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Plug an authorization provider function into <code class="module"><a href="../mod/mod_authz_core.html">mod_authz_core</a></code>
+</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaAuthzProvider provider_name /path/to/lua/script.lua function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>2.4.3 and later</td></tr>
+</table>
+<p>After a lua function has been registered as authorization provider, it can be used
+with the <code class="directive"><a href="../mod/mod_authz_core.html#require">Require</a></code> directive:</p>
+
+<div class="example"><pre class="prettyprint lang-config">
+LuaRoot /usr/local/apache2/lua
+LuaAuthzProvider foo authz.lua authz_check_foo
+&lt;Location /&gt;
+  Require foo bar
+&lt;/Location&gt;
+</pre>
+</div>
+
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookAccessChecker" id="LuaHookAccessChecker">LuaHookAccessChecker</a> <a name="luahookaccesschecker" id="luahookaccesschecker">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the access_checker phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookAccessChecker  /path/to/lua/script.lua  hook_function_name [early|late]</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>The optional third argument is supported in 2.3.15 and later</td></tr>
+</table>
+<p>Add your hook to the access_checker phase.  An access checker
+hook function usually returns OK, DECLINED, or HTTP_FORBIDDEN.</p>
+   <div class="note"><h3>Ordering</h3><p>The optional arguments "early" or "late" 
+   control when this script runs relative to other modules.</p></div>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookAuthChecker" id="LuaHookAuthChecker">LuaHookAuthChecker</a> <a name="luahookauthchecker" id="luahookauthchecker">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the auth_checker phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookAuthChecker  /path/to/lua/script.lua hook_function_name [early|late]</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>The optional third argument is supported in 2.3.15 and later</td></tr>
+</table>
+<p>Invoke a lua function in the auth_checker phase of processing
+a request.  This can be used to implement arbitrary authentication
+and authorization checking.  A very simple example:
+</p>
+<pre class="prettyprint lang-lua">
+require 'apache2'
+
+-- fake authcheck hook
+-- If request has no auth info, set the response header and
+-- return a 401 to ask the browser for basic auth info.
+-- If request has auth info, don't actually look at it, just
+-- pretend we got userid 'foo' and validated it.
+-- Then check if the userid is 'foo' and accept the request.
+function authcheck_hook(r)
+
+   -- look for auth info
+   auth = r.headers_in['Authorization']
+   if auth ~= nil then
+     -- fake the user
+     r.user = 'foo'
+   end
+
+   if r.user == nil then
+      r:debug("authcheck: user is nil, returning 401")
+      r.err_headers_out['WWW-Authenticate'] = 'Basic realm="WallyWorld"'
+      return 401
+   elseif r.user == "foo" then
+      r:debug('user foo: OK')
+   else
+      r:debug("authcheck: user='" .. r.user .. "'")
+      r.err_headers_out['WWW-Authenticate'] = 'Basic realm="WallyWorld"'
+      return 401
+   end
+   return apache2.OK
+end
+</pre>
+
+   <div class="note"><h3>Ordering</h3><p>The optional arguments "early" or "late" 
+   control when this script runs relative to other modules.</p></div>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookCheckUserID" id="LuaHookCheckUserID">LuaHookCheckUserID</a> <a name="luahookcheckuserid" id="luahookcheckuserid">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the check_user_id phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookCheckUserID  /path/to/lua/script.lua hook_function_name [early|late]</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>The optional third argument is supported in 2.3.15 and later</td></tr>
+</table><p>...</p>
+   <div class="note"><h3>Ordering</h3><p>The optional arguments "early" or "late" 
+   control when this script runs relative to other modules.</p></div>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookFixups" id="LuaHookFixups">LuaHookFixups</a> <a name="luahookfixups" id="luahookfixups">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the fixups phase of request
+processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookFixups  /path/to/lua/script.lua hook_function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table>
+<p>
+    Just like LuaHookTranslateName, but executed at the fixups phase
+</p>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookInsertFilter" id="LuaHookInsertFilter">LuaHookInsertFilter</a> <a name="luahookinsertfilter" id="luahookinsertfilter">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the insert_filter phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookInsertFilter  /path/to/lua/script.lua hook_function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table><p>Not Yet Implemented</p>
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookMapToStorage" id="LuaHookMapToStorage">LuaHookMapToStorage</a> <a name="luahookmaptostorage" id="luahookmaptostorage">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the map_to_storage phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookMapToStorage  /path/to/lua/script.lua hook_function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table><p>...</p>
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookTranslateName" id="LuaHookTranslateName">LuaHookTranslateName</a> <a name="luahooktranslatename" id="luahooktranslatename">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the translate name phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookTranslateName  /path/to/lua/script.lua  hook_function_name [early|late]</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>The optional third argument is supported in 2.3.15 and later</td></tr>
+</table><p>
+    Add a hook (at APR_HOOK_MIDDLE) to the translate name phase of
+    request processing. The hook function receives a single
+    argument, the request_rec, and should return a status code,
+    which is either an HTTP error code, or the constants defined
+    in the apache2 module: apache2.OK, apache2.DECLINED, or
+    apache2.DONE. </p>
+
+    <p>For those new to hooks, basically each hook will be invoked
+    until one of them returns apache2.OK. If your hook doesn't
+    want to do the translation it should just return
+    apache2.DECLINED. If the request should stop processing, then
+    return apache2.DONE.</p>
+
+    <p>Example:</p>
+
+<pre class="prettyprint lang-config">
+# httpd.conf
+LuaHookTranslateName /scripts/conf/hooks.lua silly_mapper
+</pre>
+
+
+<pre class="prettyprint lang-lua">
+-- /scripts/conf/hooks.lua --
+require "apache2"
+function silly_mapper(r)
+    if r.uri == "/" then
+        r.filename = "/var/www/home.lua"
+        return apache2.OK
+    else
+        return apache2.DECLINED
+    end
+end
+</pre>
+
+
+   <div class="note"><h3>Context</h3><p>This directive is not valid in <code class="directive"><a href="../mod/core.html#directory">&lt;Directory&gt;</a></code>, <code class="directive"><a href="../mod/core.html#files">&lt;Files&gt;</a></code>, or htaccess
+   context.</p></div>
+
+   <div class="note"><h3>Ordering</h3><p>The optional arguments "early" or "late" 
+   control when this script runs relative to other modules.</p></div>
+
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaHookTypeChecker" id="LuaHookTypeChecker">LuaHookTypeChecker</a> <a name="luahooktypechecker" id="luahooktypechecker">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the type_checker phase of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaHookTypeChecker  /path/to/lua/script.lua hook_function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table><p>...</p>
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaInherit" id="LuaInherit">LuaInherit</a> <a name="luainherit" id="luainherit">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Controls how parent configuration sections are merged into children</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaInherit none|parent-first|parent-last</code></td></tr>
+<tr><th><a href="directive-dict.html#Default">Default:</a></th><td><code>LuaInherit parent-first</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+<tr><th><a href="directive-dict.html#Compatibility">Compatibility:</a></th><td>2.4.0 and later</td></tr>
+</table><p>By default, if LuaHook* directives are used in overlapping
+    Directory or Location configuration sections, the scripts defined in the
+    more specific section are run <em>after</em> those defined in the more
+    generic section (LuaInherit parent-first).  You can reverse this order, or
+    make the parent context not apply at all.</p>
+    
+    <p> In previous 2.3.x releases, the default was effectively to ignore LuaHook*
+    directives from parent configuration sections.</p>
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaPackageCPath" id="LuaPackageCPath">LuaPackageCPath</a> <a name="luapackagecpath" id="luapackagecpath">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Add a directory to lua's package.cpath</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaPackageCPath /path/to/include/?.soa</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table>
+    <p>Add a path to lua's shared library search path. Follows the same
+    conventions as lua. This just munges the package.cpath in the
+    lua vms.</p>
+
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaPackagePath" id="LuaPackagePath">LuaPackagePath</a> <a name="luapackagepath" id="luapackagepath">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Add a directory to lua's package.path</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaPackagePath /path/to/include/?.lua</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table><p>Add a path to lua's module search path. Follows the same
+    conventions as lua. This just munges the package.path in the
+    lua vms.</p>
+
+    <div class="example"><h3>Examples:</h3><pre class="prettyprint lang-config">
+LuaPackagePath /scripts/lib/?.lua
+LuaPackagePath /scripts/lib/?/init.lua
+    </pre>
+</div>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaQuickHandler" id="LuaQuickHandler">LuaQuickHandler</a> <a name="luaquickhandler" id="luaquickhandler">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Provide a hook for the quick handler of request processing</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaQuickHandler /path/to/script.lua hook_function_name</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table><p>...</p>
+   <div class="note"><h3>Context</h3><p>This directive is not valid in <code class="directive"><a href="../mod/core.html#directory">&lt;Directory&gt;</a></code>, <code class="directive"><a href="../mod/core.html#files">&lt;Files&gt;</a></code>, or htaccess
+   context.</p></div>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaRoot" id="LuaRoot">LuaRoot</a> <a name="luaroot" id="luaroot">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>Specify the base path for resolving relative paths for mod_lua directives</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaRoot /path/to/a/directory</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table>
+    <p>Specify the base path which will be used to evaluate all
+    relative paths within mod_lua. If not specified they
+    will be resolved relative to the current working directory,
+    which may not always work well for a server.</p>
+
+</div>
+<div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+<div class="directive-section"><h2><a name="LuaScope" id="LuaScope">LuaScope</a> <a name="luascope" id="luascope">Directive</a></h2>
+<table class="directive">
+<tr><th><a href="directive-dict.html#Description">Description:</a></th><td>One of once, request, conn, thread -- default is once</td></tr>
+<tr><th><a href="directive-dict.html#Syntax">Syntax:</a></th><td><code>LuaScope once|request|conn|thread</code></td></tr>
+<tr><th><a href="directive-dict.html#Default">Default:</a></th><td><code>LuaScope once</code></td></tr>
+<tr><th><a href="directive-dict.html#Context">Context:</a></th><td>server config, virtual host, directory, .htaccess</td></tr>
+<tr><th><a href="directive-dict.html#Override">Override:</a></th><td>All</td></tr>
+<tr><th><a href="directive-dict.html#Status">Status:</a></th><td>Experimental</td></tr>
+<tr><th><a href="directive-dict.html#Module">Module:</a></th><td>mod_lua</td></tr>
+</table>
+    <p>Specify the lifecycle scope of the Lua interpreter which will
+    be used by handlers in this "Directory." The default is "once"</p>
+
+   <dl>
+    <dt>once:</dt> <dd>use the interpreter once and throw it away.</dd>
+
+    <dt>request:</dt> <dd>use the interpreter to handle anything based on
+             the same file within this request, which is also
+             request scoped.</dd>
+
+    <dt>conn:</dt> <dd>Same as request but attached to the connection_rec</dd>
+    <dt>thread:</dt> <dd>Use the interpreter for the lifetime of the thread 
+            handling the request (only available with threaded MPMs).</dd>
+
+   </dl>
+
+</div>
+</div>
+<div class="bottomlang">
+<p><span>Available Languages: </span><a href="../en/mod/mod_lua.html" title="English">&nbsp;en&nbsp;</a> |
+<a href="../fr/mod/mod_lua.html" hreflang="fr" rel="alternate" title="Français">&nbsp;fr&nbsp;</a></p>
+</div><div class="top"><a href="#page-header"><img src="../images/up.gif" alt="top" /></a></div><div class="section"><h2><a id="comments_section" name="comments_section">Comments</a></h2><div class="warning"><strong>Notice:</strong><br />This is not a Q&amp;A section. Comments placed here should be pointed towards suggestions on improving the documentation or server, and may be removed again by our moderators if they are either implemented or considered invalid/off-topic. Questions on how to manage the Apache HTTP Server should be directed at either our IRC channel, #httpd, on Freenode, or sent to our <a href="http://httpd.apache.org/lists.html">mailing lists</a>.</div>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+var comments_shortname = 'httpd';
+var comments_identifier = 'http://httpd.apache.org/docs/2.4/mod/mod_lua.html';
+(function(w, d) {
+    if (w.location.hostname.toLowerCase() == "httpd.apache.org") {
+        d.write('<div id="comments_thread"><\/div>');
+        var s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://comments.apache.org/show_comments.lua?site=' + comments_shortname + '&page=' + comments_identifier;
+        (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s);
+    }
+    else { 
+        d.write('<div id="comments_thread">Comments are disabled for this page at the moment.<\/div>');
+    }
+})(window, document);
+//--><!]]></script></div><div id="footer">
+<p class="apache">Copyright 2013 The Apache Software Foundation.<br />Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
+<p class="menu"><a href="../mod/">Modules</a> | <a href="../mod/directives.html">Directives</a> | <a href="http://wiki.apache.org/httpd/FAQ">FAQ</a> | <a href="../glossary.html">Glossary</a> | <a href="../sitemap.html">Sitemap</a></p></div><script type="text/javascript"><!--//--><![CDATA[//><!--
+if (typeof(prettyPrint) !== 'undefined') {
+    prettyPrint();
+}
+//--><!]]></script>
+</body></html>

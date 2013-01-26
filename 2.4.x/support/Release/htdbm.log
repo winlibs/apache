@@ -1,0 +1,5 @@
+﻿  htdbm.c
+  passwd_common.c
+  Generating Code...
+     Creating library .\Release\htdbm.lib and object .\Release\htdbm.exp
+  htdbm.vcxproj -> g:\php-sdk\lib_builds\vc11\x86\apache_autobuild\2.4.x\support\.\Release\htdbm.exe

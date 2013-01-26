@@ -1,0 +1,304 @@
+APACHE 2.4 STATUS:                        -*- mode: text; coding: utf-8 -*-
+Last modified at [$Date: 2013-01-22 14:39:35 +0100 (Tue, 22 Jan 2013) $]
+
+The current version of this file can be found at:
+
+  * http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/STATUS
+
+Documentation status is maintained separately and can be found at:
+
+  * docs/STATUS in this source tree, or
+  * http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/docs/STATUS
+
+The current development branch of this software can be found at:
+
+  * http://svn.apache.org/repos/asf/httpd/httpd/trunk
+
+Consult the following STATUS files for information on related projects:
+
+  * http://svn.apache.org/repos/asf/apr/apr/trunk/STATUS
+  * http://svn.apache.org/repos/asf/apr/apr/branches/1.4.x/STATUS
+  * http://svn.apache.org/repos/asf/apr/apr-util/branches/1.4.x/STATUS
+
+Patches considered for backport are noted in their branches' STATUS:
+
+  * http://svn.apache.org/repos/asf/httpd/httpd/branches/2.0.x/STATUS
+  * http://svn.apache.org/repos/asf/httpd/httpd/branches/2.2.x/STATUS
+  * http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/STATUS
+
+
+
+Release history:
+    [NOTE that x.{odd}.z versions are strictly Alpha/Beta releases,
+          while x.{even}.z versions are Stable/GA releases.]
+
+    2.4.4   : In development. Jim and sf propose a release RSN; jim
+              would like to see the mod_proxy and mod_slotmem in this
+              release though. Jim volunteers to RM.
+    2.4.3   : Tagged on August 17, 2012. Released Aug 18, 2012
+    2.4.2   : Tagged on April 5, 2012. Released Apr 17, 2012.
+    2.4.1   : Tagged on February 13, 2012. Released Feb 21, 2012.
+    2.4.0   : Tagged on January 16, 2012, not released.
+    2.3.16  : Tagged on December 15, 2011.
+    2.3.15  : Tagged on November 8, 2011. Released Nov. 15, 2011.
+    2.3.14  : Tagged on August 1, 2011. Released Aug. 9, 2011.
+    2.3.13  : Tagged on June 28, 2011, not released.
+    2.3.12  : Tagged on May 11, 2011. Released May 23, 2011.
+    2.3.11  : Released as Beta on March 7, 2011.
+    2.3.10  : Tagged on December 13, 2010. Released Dec 21, 2010.
+    2.3.9   : Tagged on November 23, 2010, not released.
+    2.3.8   : Tagged on August 24, 2010.
+    2.3.7   : Tagged on August 19, 2010, not released.
+    2.3.6   : Released on June 21, 2010.
+    2.3.5   : Released on January 26, 2010.
+    2.3.4   : Released on December 8, 2009.
+    2.3.3   : Tagged on November 11, 2009, not released.
+    2.3.2   : Tagged on March 23, 2009, not released.
+    2.3.1   : Tagged on January 2, 2009, not released.
+    2.3.0   : Tagged on December 6, 2008, not released.
+
+Contributors looking for a mission:
+
+  * Just do an egrep on "TODO" or "XXX" in the source.
+
+  * Review the bug database at: http://issues.apache.org/bugzilla/
+
+  * Review the "PatchAvailable" bugs in the bug database:
+
+    https://issues.apache.org/bugzilla/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&product=Apache+httpd-2&keywords=PatchAvailable
+
+    After testing, you can append a comment saying "Reviewed and tested".
+
+  * Open bugs in the bug database.
+
+  * See also the STATUS file in the docs/ directory, which lists documentation-specific TODO items.
+
+
+CURRENT RELEASE NOTES:
+
+  * Forward binary compatibility is expected of Apache 2.4.x releases, such
+    that no MMN major number changes will occur after 2.4.1.  Such changes can
+    only be made in the trunk.
+
+  * All commits to branches/2.4.x must be reflected in SVN trunk,
+    as well, if they apply.  Logical progression is commit to trunk
+    then merge into branches/2.4.x, as applicable.
+
+
+RELEASE SHOWSTOPPERS:
+
+
+PATCHES ACCEPTED TO BACKPORT FROM TRUNK:
+  [ start all new proposals below, under PATCHES PROPOSED. ]
+
+   * mod_ssl/ab: improve pkg-config usage in configure (addresses PR 54252)
+     trunk patch: https://svn.apache.org/viewvc/httpd/httpd/trunk/acinclude.m4?r1=1396440&r2=1429228
+     2.4.x patch: trunk patch works
+     +1: kbrand, jorton, jerenkrantz
+     sf notes: -0.5: Including libraries for static usage is a bad default for
+               Linux distributions, see
+               http://mail-archives.apache.org/mod_mbox/httpd-dev/201301.mbox/%3C20130103112044.GA19653%40redhat.com%3E
+        kbrand: configure option added in r1429228
+
+
+PATCHES PROPOSED TO BACKPORT FROM TRUNK:
+  [ New proposals should be added at the end of the list ]
+
+
+    * mod_lua: Add bindings for mod_dbd/apr_dbd database access.
+      trunk patch: http://svn.apache.org/r1430225
+                   http://svn.apache.org/r1430265
+                   http://svn.apache.org/r1430472
+                   http://svn.apache.org/r1430656
+                   http://svn.apache.org/r1431236 (CodeWarrior workaround)
+                   http://svn.apache.org/r1431322
+                   http://svn.apache.org/r1431930 (Windows patch)
+                   http://svn.apache.org/r1432418 (Debian patch)
+                   http://svn.apache.org/r1432892 (fix for external drivers)
+      2.4.x patch: http://www.humbedooh.com/apache/lua_dbd.patch
+                   + CHANGES
+      +1: humbedooh, covener
+      +1: fuankg (compiles/links fine now for NetWare; no functional tests yet)
+      gsmith notes: compiles/links on Windows now.
+      
+   * Makefile.win: Added copying of .vbs / .wsf CGIs to Windows install target.
+                   Moved fixing of shebang to separate target so that it is
+                   no longer executed by default and all CGIs remain inactive.
+     trunk patch: http://svn.apache.org/viewvc?view=revision&revision=1387984
+                  http://svn.apache.org/viewvc?view=revision&revision=1421203
+                  http://svn.apache.org/viewvc?view=revision&revision=1421591
+     2.4.x patch: http://people.apache.org/~fuankg/diffs/httpd-2.4.x-Makefile.win.diff
+     +1 fuankg, gsmith
+     -.8: trawick
+          This commit is essentially deciding that an httpd install on
+          Windows now has printenv/testcgi written in 2 more languages.
+          To the extent that the usefulness is that it shows how to make scripts
+          of these types executable by httpd, I believe that the documentation
+          is the proper place to solve that.  To the extent that the usefullness
+          is to show how to implement a CGI in these particular languages, I believe
+          that the httpd distribution and documentation in general is not the
+          place for that.  Historically these types of scripts have caused problems
+          for downstream vendorsas well as newbies (and sometimes the intersection
+          of those two groups) who don't understand that these are information leaks
+          once they are enabled, and the subtlety of the way they are disabled ("Apache
+          messed up the first line; let me fix that") contributes to that.
+     fuankg notes: I've just added a big warning to all CGI scripts which should now
+          make absolutely clear that these CGIs are for testing purpose only - so those
+          who enable those scripts with inserting the right shebang should be 100% aware
+          of any risks (this should cover your last point).
+
+
+   * mod_proxy: Allow balancers to be server-specific, as they should have
+     been. Inheritance causes too many behind-the-scene interactions
+     to be reliable in a dynamic environ. We maintain the old-default
+     of inheritance.
+     trunk patch: http://svn.apache.org/viewvc?view=revision&revision=1387603
+                  http://svn.apache.org/viewvc?view=revision&revision=1388029
+                  http://svn.apache.org/viewvc?view=revision&revision=1420124
+                  http://svn.apache.org/viewvc?view=revision&revision=1421288
+                  http://svn.apache.org/viewvc?view=revision&revision=1421912
+                  http://svn.apache.org/viewvc?view=revision&revision=1422943
+                  http://svn.apache.org/viewvc?view=revision&revision=1422980
+                  http://svn.apache.org/viewvc?view=revision&revision=1430575
+     2.4.x patch: http://people.apache.org/~jim/patches/proxypassinherit.patch
+     +1: jim, druggeri
+     druggeri: (Discussion started on dev@ list)
+               * This doesn't seem to do anything for ProxyPass at server level
+                 but doc seems to imply it does.
+               * Can you elaborate more in docs about issues and inconsistences?
+               * Doc for 2.4 patch notes version 2.5.0
+                 jim: are we OK with changing the 2.4.x docs async?
+                 druggeri: sure - just noting that as-applied it would be incorrect
+
+  * mod_status: Add useful mod_status info... try to determine last time
+    a specific vhost was accessed/used.
+    trunk patch: https://svn.apache.org/viewvc?view=revision&revision=1417529
+    2.4.x patch: trunk patch works
+    +1: jim, jerenkrantz
+
+  * mod_ssl: Allow the SSLUserName to be used to control the
+    username passed by the FakeBasicAuth option. PR52616.
+    trunk patch: http://svn.apache.org/viewvc?rev=1432322&view=rev
+    2.4.x patch: trunk patch works (minus docs/log-message-tags)
+    +1: minfrin
+    -1: jorton, changes existing semantics per kbrand msgid <50F65606.9050607@velox.ch>
+
+  * mod_ssl: add support for subjectAltName-based host name checking
+    in proxy mode (PR 54030)
+    trunk patch: https://svn.apache.org/viewvc?view=revision&revision=r1425874
+                 https://svn.apache.org/viewvc?view=revision&revision=r1426850
+    2.4.x patch: trunk patch works (modulo CHANGES and next-number)
+    +1: kbrand
+
+  * mod_authnz_ldap: Allow using exec: callouts like SSLPassphraseDialog
+    for AuthLDAPBindPassword.
+    trunk patch: http://svn.apache.org/viewvc?view=revision&revision=1433478
+    2.4.x patch: http://people.apache.org/~druggeri/patches/AuthLDAPBindPasswordExec-2.4.patch
+                 (20130119 - updated to include minor mmn bump)
+    +1: druggeri
+    covener: minor MMM bump?  (Thanks for reminder. This is done. -druggeri)
+
+A list of further possible backports can be found at:
+    http://people.apache.org/~rjung/patches/possible-backports-httpd-trunk-2_4.txt
+If you want to propose one of those, please still add them here.
+
+
+OTHER PROPOSALS
+
+   * opinion on more complete DefaultRuntimeDir use in 2.4.x?
+     o If a module has a config directive for the run-time file that
+       treats the configured path as relative to server root, preserve
+       that behavior but change the location when not configured to
+       respect DefaultRuntimeDir.  With these changes, users with no
+       per-runtime-file configuration directives can control
+       everything with DefaultRuntimeDir.
+       BUT: Existing users of DefaultRuntimeDir might get a short-term scare
+       when some unconfigured run-time file starts respecting their
+       DefaultRuntimeDir directive after an upgrade.
+       +1: trawick, jim, rjung
+       rjung: applicable trunk revisions WITHOUT the compatibility tweaks
+              described above:
+       jim: mod_slotmem_plain lacks
+          heartbeat          r1364695
+          scoreboard         r1369477
+          core/pid file      r1369808
+          core/mutex         r1370288
+          mod_socache_XXX    r1370225, r1407385
+          mod_ldap           r1371684
+          mod_cache          r1407381
+
+PATCHES/ISSUES THAT ARE STALLED
+
+  * cross-compile: allow to provide CC_FOR_BUILD so that gen_test_char will be
+    compiled by the build compiler instead of the host compiler.
+    Also set CC_FOR_BUILD to 'cc' when cross-compilation is detected.
+    Trunk patches: http://svn.apache.org/viewvc?view=revision&revision=1327907
+                   http://svn.apache.org/viewvc?view=revision&revision=1328390
+                   http://svn.apache.org/viewvc?view=revision&revision=1328714
+    2.4 patch: http://people.apache.org/~fuankg/diffs/httpd-2.4.x-cross_compile.diff
+    fuankg: on hold until we agree for a better and more simple solution ...
+
+   * mod_lua: Add a new directive, LuaCodeCache, for controlling the in-memory
+              caching of scripts
+     trunk patch: http://svn.apache.org/r1366890
+                  http://svn.apache.org/r1367025
+                  http://svn.apache.org/r1367040
+                  http://svn.apache.org/r1367048
+                  http://svn.apache.org/r1383024
+                  http://svn.apache.org/r1383028
+                  http://svn.apache.org/r1383037
+                  http://svn.apache.org/r1367042 (CHANGES)
+     2.4.x patch: Trunk patch works
+     +1: humbedooh, rjung
+     rjung: docs missing?
+     humbedooh: It's in the 2.4 docs already, but commented out, as with a lot
+                of other functions that were never actually made. It's a mess ;)
+     -1: sf
+     sf: * If you copy'n'paste code, you need to assign new APLOGNOs.
+           See r1383013 and docs/log-message-tags/README.
+         * The code did not compile without warning, see r1383022.
+         * If you have a request_rec, use ap_log_rerror to get the most
+           specific log config. ap_log_perror always uses the global server
+           log config.
+         * Now that you have the request pool, don't you want to use it for
+           the apr_stat() call instead of lifecycle_pool?
+         * Try to not introduce new coding style issues. See r1383024,
+           r1383028, r1383037.
+
+   * mod_ssl: Add support for Next Protocol Negotiation.
+     Trunk patch:
+       http://svn.apache.org/viewvc?view=revision&revision=1332643
+     2.4.x patch:
+       Trunk patch works.
+     +1: ben
+     sf says: Needs r1345599, too.
+              And wrowe's comment about the 2.2 patch is also valid for 2.4:
+              http://svn.apache.org/viewvc?view=revision&revision=1354823
+
+   * mod_ssl: Add RFC 5878 support. This allows support of mechansisms
+              such as Certificate Transparency. Note that new
+              mechanisms are supported without software updates.
+     trunk patch: http://svn.apache.org/viewvc?view=revision&revision=1352596
+     2.4.x patch: http://people.apache.org/~ben/httpd-2.4-rfc5878.patch
+     +1: ben, druggeri
+     -1: kbrand
+     druggeri note: Needs docs for new directive
+     kbrand: depends on an unreleased OpenSSL version (1.0.2), and
+             RFC 5878 is of "Category: Experimental". Seems premature
+             to me to consider for backporting to 2.4/2.2 at this point.
+             The API in the OpenSSL implementation from May 2012
+             (http://cvs.openssl.org/chngview?cn=22601) only covers the
+             privately-defined TLSEXT_AUTHZDATAFORMAT_audit_proof, there's
+             no support for x509_attr_cert (section 3.3.1 in RFC 5878) or
+             saml_assertion (3.3.2). SSL_CTX_use_authz_file doesn't have
+             any docs in OpenSSL, either, and there's no "openssl foo ..."
+             command or similar to create/manage such files. Trunk is
+             the right place where it can grow.
+             Finally, httpd-2.4-rfc5878.patch includes a build-system change
+             which is unrelated to this feature (see separate proposal from
+             rjung below, ssl-support-uninstalled-openssl-2_4.patch).
+     ben: not correct that it depends on OpenSSL 1.0.2, it builds with
+          any version. Also, if you read my note to dev@ you will see
+          why it is not premature.
+     minfrin: once this gets docs, +1.
+

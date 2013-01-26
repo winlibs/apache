@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{b2600cdc-40fa-4841-93b1-5de6e4b8d945}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{b49bbd8f-2dc0-4d3f-ae66-0e2ce10efa6e}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+    <Filter Include="Ajp Files">
+      <UniqueIdentifier>{04e2088e-99fc-460d-b6d6-6247f7cb9559}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="mod_proxy_ajp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ajp_header.c">
+      <Filter>Ajp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ajp_link.c">
+      <Filter>Ajp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ajp_msg.c">
+      <Filter>Ajp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ajp_utils.c">
+      <Filter>Ajp Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mod_proxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ajp.h">
+      <Filter>Ajp Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ajp_header.h">
+      <Filter>Ajp Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\build\win32\httpd.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
