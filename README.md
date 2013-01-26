@@ -1,8 +1,11 @@
 How to apache 2.4 build
 ========================
+
+Based on http://www.apachelounge.com/viewtopic.php?t=5032
+
 Steps: 
-1.) Extract the zip to a folder 
-2.) Make sure you have installed the prerequisites and the PATH variable has been set(checkbox in installer): 
+1. Extract the zip to a folder
+2. Make sure you have installed the prerequisites and the PATH variable has been set(checkbox in installer): 
 - Visual Studio VC10 
 - Windows SDK 7.1 
 - Python (PATH variable set) 
