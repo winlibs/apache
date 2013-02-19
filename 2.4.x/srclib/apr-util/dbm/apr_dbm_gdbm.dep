@@ -1,0 +1,24 @@
+# Microsoft Developer Studio Generated Dependency File, included by apr_dbm_gdbm.mak
+
+.\apr_dbm_gdbm.c : \
+	"..\..\apr\include\apr_allocator.h"\
+	"..\..\apr\include\apr_errno.h"\
+	"..\..\apr\include\apr_file_info.h"\
+	"..\..\apr\include\apr_file_io.h"\
+	"..\..\apr\include\apr_general.h"\
+	"..\..\apr\include\apr_inherit.h"\
+	"..\..\apr\include\apr_pools.h"\
+	"..\..\apr\include\apr_strings.h"\
+	"..\..\apr\include\apr_tables.h"\
+	"..\..\apr\include\apr_thread_mutex.h"\
+	"..\..\apr\include\apr_time.h"\
+	"..\..\apr\include\apr_user.h"\
+	"..\..\apr\include\apr_want.h"\
+	"..\include\apr_dbm.h"\
+	"..\include\private\apr_dbm_private.h"\
+	
+
+..\libaprutil.rc : \
+	"..\..\apr\include\apr_version.h"\
+	"..\include\apu_version.h"\
+	

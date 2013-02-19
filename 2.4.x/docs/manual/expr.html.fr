@@ -434,7 +434,8 @@ listfunction ::= listfuncname "<strong>(</strong>" word "<strong>)</strong>"
 <tr><td><code>resp</code></td>
         <td>Lit l'en-tête de réponse HTTP</td><td /></tr>
 <tr class="odd"><td><code>reqenv</code></td>
-        <td>Recherche une variable d'environnement de requête</td><td /></tr>
+        <td>Recherche une variable d'environnement de requête (on
+	peut aussi utiliser le raccourci <code>v</code>).</td><td /></tr>
 <tr><td><code>osenv</code></td>
         <td>Recherche une variable d'environnement du système
 	d'exploitation</td><td /></tr>
@@ -497,7 +498,7 @@ listfunction ::= listfuncname "<strong>(</strong>" word "<strong>)</strong>"
 # Comparer le nom d'hôte avec example.com et rediriger vers
 # www.example.com si le nom d'hôte correspond
 &lt;If "%{HTTP_HOST} == 'example.com'"&gt;
-    Redirect permanent / http://www.example.com
+    Redirect permanent / http://www.example.com/
 &lt;/If&gt;
 
 # Forcer le type text/plain si un fichier fait l'objet d'une

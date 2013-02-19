@@ -1,0 +1,19 @@
+# Microsoft Developer Studio Generated Dependency File, included by apr_dbd_freetds.mak
+
+.\apr_dbd_freetds.c : \
+	"..\..\apr\include\apr_allocator.h"\
+	"..\..\apr\include\apr_errno.h"\
+	"..\..\apr\include\apr_general.h"\
+	"..\..\apr\include\apr_lib.h"\
+	"..\..\apr\include\apr_pools.h"\
+	"..\..\apr\include\apr_strings.h"\
+	"..\..\apr\include\apr_thread_mutex.h"\
+	"..\..\apr\include\apr_want.h"\
+	"..\include\apr_dbd.h"\
+	"..\include\private\apr_dbd_internal.h"\
+	
+
+..\libaprutil.rc : \
+	"..\..\apr\include\apr_version.h"\
+	"..\include\apu_version.h"\
+	

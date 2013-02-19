@@ -1,0 +1,823 @@
+# Microsoft Developer Studio Generated Dependency File, included by libaprutil.mak
+
+.\buckets\apr_brigade.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_alloc.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_eos.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_file.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_flush.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_heap.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_mmap.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_pipe.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_pool.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_refcount.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_simple.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\buckets\apr_buckets_socket.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	
+
+.\crypto\apr_crypto.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_crypto.h"\
+	".\include\apu_errno.h"\
+	".\include\apu_version.h"\
+	".\include\private\apr_crypto_internal.h"\
+	".\include\private\apu_internal.h"\
+	
+
+.\crypto\apr_md4.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_md4.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\crypto\apr_md5.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_md5.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\crypto\apr_passwd.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\crypto\crypt_blowfish.h"\
+	".\include\apr_md5.h"\
+	".\include\apr_sha1.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\crypto\apr_sha1.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_base64.h"\
+	".\include\apr_sha1.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\crypto\crypt_blowfish.c : \
+	".\crypto\crypt_blowfish.h"\
+	
+
+.\crypto\getuuid.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_global_mutex.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_portable.h"\
+	"..\apr\include\apr_proc_mutex.h"\
+	"..\apr\include\apr_shm.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_thread_proc.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_md5.h"\
+	".\include\apr_uuid.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\crypto\uuid.c : \
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_lib.h"\
+	".\include\apr_uuid.h"\
+	
+
+.\dbd\apr_dbd.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_atomic.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_dbd.h"\
+	".\include\apu_version.h"\
+	".\include\private\apr_dbd_internal.h"\
+	".\include\private\apu_internal.h"\
+	
+
+.\dbm\apr_dbm.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_atomic.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_dbm.h"\
+	".\include\apu_version.h"\
+	".\include\private\apr_dbm_private.h"\
+	".\include\private\apu_internal.h"\
+	
+
+.\dbm\apr_dbm_sdbm.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_dbm.h"\
+	".\include\apr_sdbm.h"\
+	".\include\private\apr_dbm_private.h"\
+	
+
+.\encoding\apr_base64.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_base64.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\hooks\apr_hooks.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_hooks.h"\
+	".\include\apr_optional.h"\
+	".\include\apr_optional_hooks.h"\
+	
+
+.\ldap\apr_ldap_stub.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apu_version.h"\
+	".\include\private\apu_internal.h"\
+	
+
+.\ldap\apr_ldap_url.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	
+
+.\memcache\apr_memcache.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_mmap.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_poll.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_buckets.h"\
+	".\include\apr_memcache.h"\
+	".\include\apr_reslist.h"\
+	
+
+.\misc\apr_date.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_date.h"\
+	
+
+.\misc\apr_queue.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_global_mutex.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_portable.h"\
+	"..\apr\include\apr_proc_mutex.h"\
+	"..\apr\include\apr_shm.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_cond.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_thread_proc.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_queue.h"\
+	
+
+.\misc\apr_reslist.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_cond.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_reslist.h"\
+	
+
+.\misc\apr_rmm.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_proc_mutex.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_thread_rwlock.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_anylock.h"\
+	".\include\apr_rmm.h"\
+	
+
+.\misc\apr_thread_pool.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_global_mutex.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_portable.h"\
+	"..\apr\include\apr_proc_mutex.h"\
+	"..\apr\include\apr_ring.h"\
+	"..\apr\include\apr_shm.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_cond.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_thread_proc.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_thread_pool.h"\
+	
+
+.\misc\apu_dso.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_atomic.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_env.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_hash.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apu_version.h"\
+	".\include\private\apu_internal.h"\
+	
+
+.\misc\apu_version.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_version.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apu_version.h"\
+	
+
+.\dbm\sdbm\sdbm.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\dbm\sdbm\sdbm_pair.h"\
+	".\dbm\sdbm\sdbm_private.h"\
+	".\dbm\sdbm\sdbm_tune.h"\
+	".\include\apr_sdbm.h"\
+	
+
+.\dbm\sdbm\sdbm_hash.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\dbm\sdbm\sdbm_private.h"\
+	".\include\apr_sdbm.h"\
+	
+
+.\dbm\sdbm\sdbm_lock.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\dbm\sdbm\sdbm_private.h"\
+	".\dbm\sdbm\sdbm_tune.h"\
+	".\include\apr_sdbm.h"\
+	
+
+.\dbm\sdbm\sdbm_pair.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\dbm\sdbm\sdbm_pair.h"\
+	".\dbm\sdbm\sdbm_private.h"\
+	".\dbm\sdbm\sdbm_tune.h"\
+	".\include\apr_sdbm.h"\
+	
+
+.\strmatch\apr_strmatch.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_strmatch.h"\
+	
+
+.\uri\apr_uri.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_uri.h"\
+	
+
+.\xlate\xlate.c : \
+	"..\apr-iconv\include\apr_iconv.h"\
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_dso.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_global_mutex.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_lib.h"\
+	"..\apr\include\apr_network_io.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_portable.h"\
+	"..\apr\include\apr_proc_mutex.h"\
+	"..\apr\include\apr_shm.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_thread_proc.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_xlate.h"\
+	
+
+.\xml\apr_xml.c : \
+	"..\apr\include\apr_allocator.h"\
+	"..\apr\include\apr_errno.h"\
+	"..\apr\include\apr_file_info.h"\
+	"..\apr\include\apr_file_io.h"\
+	"..\apr\include\apr_general.h"\
+	"..\apr\include\apr_inherit.h"\
+	"..\apr\include\apr_pools.h"\
+	"..\apr\include\apr_strings.h"\
+	"..\apr\include\apr_tables.h"\
+	"..\apr\include\apr_thread_mutex.h"\
+	"..\apr\include\apr_time.h"\
+	"..\apr\include\apr_user.h"\
+	"..\apr\include\apr_want.h"\
+	".\include\apr_xlate.h"\
+	".\include\apr_xml.h"\
+	".\xml\expat\lib\expat.h"\
+	
+
+!IF  "$(CFG)" == "libaprutil - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Debug"
+
+!ENDIF 
+
+!IF  "$(CFG)" == "libaprutil - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Debug"
+
+!ENDIF 
+
+!IF  "$(CFG)" == "libaprutil - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Debug"
+
+!ENDIF 
+
+!IF  "$(CFG)" == "libaprutil - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Debug"
+
+!ENDIF 
+
+!IF  "$(CFG)" == "libaprutil - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Release"
+
+!ELSEIF  "$(CFG)" == "libaprutil - x64 Debug"
+
+!ENDIF 
+
+.\libaprutil.rc : \
+	"..\apr\include\apr_version.h"\
+	".\include\apu_version.h"\
+	

@@ -42,7 +42,7 @@
 # so the server root should be given in forward slashes (quoted),
 # preferably with the drive designation!
 
-!IF EXIST("httpd.vcxproj") && ([devenv /help > NUL 2>&1] == 0) \
+!IF EXIST("httpd.vcproj") && ([devenv /help > NUL 2>&1] == 0) \
     && !defined(USEMAK) && !defined(USEDSW)
 USESLN=1
 USEMAK=0
@@ -568,7 +568,7 @@ _build:
 	 $(MAKE) $(MAKEOPT) -f rotatelogs.mak      CFG="rotatelogs - Win32 $(LONG)" RECURSE=0 $(CTARGET)
 	cd ..
 	cd support\win32
-#	 $(MAKE) $(MAKEOPT) -f ApacheMonitor.mak   CFG="ApacheMonitor - Win32 $(LONG)" RECURSE=0 $(CTARGET)
+	 $(MAKE) $(MAKEOPT) -f ApacheMonitor.mak   CFG="ApacheMonitor - Win32 $(LONG)" RECURSE=0 $(CTARGET)
 	 $(MAKE) $(MAKEOPT) -f wintty.mak          CFG="wintty - Win32 $(LONG)" RECURSE=0 $(CTARGET)
 	cd ..\..
 
@@ -696,7 +696,7 @@ _copybin:
 	copy modules\cache\$(LONG)\mod_socache_shmcb.$(src_so)	"$(inst_so)" <.y
 	copy modules\core\$(LONG)\mod_watchdog.$(src_so) 	"$(inst_so)" <.y
 	copy modules\cluster\$(LONG)\mod_heartbeat.$(src_so)	"$(inst_so)" <.y
-#	copy modules\cluster\$(LONG)\mod_heartmonitor.$(src_so)	"$(inst_so)" <.y
+	copy modules\cluster\$(LONG)\mod_heartmonitor.$(src_so)	"$(inst_so)" <.y
 	copy modules\database\$(LONG)\mod_dbd.$(src_so)		"$(inst_so)" <.y
 	copy modules\dav\fs\$(LONG)\mod_dav_fs.$(src_so) 	"$(inst_so)" <.y
 	copy modules\dav\lock\$(LONG)\mod_dav_lock.$(src_so) 	"$(inst_so)" <.y
@@ -812,7 +812,7 @@ _copybin:
 	copy support\$(LONG)\httxt2dbm.$(src_exe)		"$(inst_exe)" <.y
 	copy support\$(LONG)\logresolve.$(src_exe) 		"$(inst_exe)" <.y
 	copy support\$(LONG)\rotatelogs.$(src_exe) 		"$(inst_exe)" <.y
-#	copy support\win32\$(LONG)\ApacheMonitor.$(src_exe) 	"$(inst_exe)" <.y
+	copy support\win32\$(LONG)\ApacheMonitor.$(src_exe) 	"$(inst_exe)" <.y
 	copy support\win32\$(LONG)\wintty.$(src_exe) 		"$(inst_exe)" <.y
 
 

@@ -1,0 +1,1 @@
+nmake -f Makefile.win PORT=80 INSTDIR="g:\phpbuildss\Apache243" SHORT=R LONG=Release _install
