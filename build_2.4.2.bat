@@ -412,7 +412,7 @@ IF %DO_COPY_STUFF% == 1 (
 	@ECHO # COPYING %API_DIR% TO %APACHE_DIR%\srclib\apr-iconv\
 	xcopy /s/e/y %API_DIR% %APACHE_DIR%\srclib\apr-iconv\
 	@ECHO # COPYING %EXTERNAL_BIN_DIR%\openssl TO %APACHE_DIR%\srclib\openssl\
-	xcopy /s/e/y %EXTERNAL_BIN_DIR%\openssl %APACHE_DIR%\srclib\apr-iconv\
+	xcopy /s/e/y %EXTERNAL_BIN_DIR%\openssl %APACHE_DIR%\srclib\openssl\
 	@ECHO # COPYING %EXTERNAL_DOWNLOAD_DIR%\zlib TO %APACHE_DIR%\srclib\zlib\
 	xcopy /s/e/y %EXTERNAL_DOWNLOAD_DIR%\zlib %APACHE_DIR%\srclib\zlib\
 	@ECHO # COPYING %EXTERNAL_BIN_DIR%\pcre TO %APACHE_DIR%\srclib\pcre\
